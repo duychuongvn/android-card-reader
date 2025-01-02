@@ -86,11 +86,6 @@ public class MyWebSocketClient  {
                 } else {
                     try {
                         byte[] response = isoDep.transceive(ByteUtils.fromHexString(data));
-                        if(response.length > 2) {
-                            byte[]cardRes = new byte[response.length -2];
-                            System.arraycopy(response, 0, cardRes,0, cardRes.length);
-                            response = cardRes;
-                        }
                         String cardResponse =  ByteUtils.bytesToHexStringNoSpace(response);
                         consumer.accept("\n Card response: " +  cardResponse);
                         System.out.printf(">>>>" + cardResponse);
